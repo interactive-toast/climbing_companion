@@ -5,85 +5,144 @@
 	<title>Geodude's Revenge</title>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-			// Get the parameter string from the URL
-			const urlParams = new URLSearchParams(window.location.search);
-			// Get the value of the 'title' parameter, or use a default value
-			const title = urlParams.get('title') || "Geodude's Revenge";
-			const rating = urlParams.get('rating') || 'v6';
-			// Set the title of the page to the parameter value
-			document.title = title;
-			// Get the .title element and update its content
-			const titleElem = document.querySelector('.title');
-			const ratingElem = document.querySelector('.rating');
-			titleElem.textContent = title;
-			ratingElem.textContent = rating;
+      const modal = document.getElementById("myModal");
+      const button = document.querySelector(".button");
+      const closeBtn = document.querySelector(".close");
+
+      button.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      closeBtn.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      // Get the parameter string from the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      // Get the value of the 'title' parameter, or use a default value
+      const title = urlParams.get('title') || "Geodude's Revenge";
+      const rating = urlParams.get('rating') || 'v6';
+      // Set the title of the page to the parameter value
+      document.title = title;
+      // Get the .title element and update its content
+      const titleElem = document.querySelector('.title');
+      const ratingElem = document.querySelector('.rating');
+      titleElem.textContent = title;
+      ratingElem.textContent = rating;
 		});
 	</script>
-	<style>
-		body {
-			margin: 0;
-			padding: 16px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-			background-image: url('background.jpg');
-			background-size: cover;
-			backdrop-filter: blur(8px);
-		}
+    <style>
+    body {
+      margin: 0;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('background.jpg');
+      background-size: cover;
+      backdrop-filter: blur(8px);
+    }
 
-		.container {
-			text-align: center;
-			background-color: rgba(255, 255, 255, 0.8);
-			padding: 32px;
-			border-radius: 8px;
-			box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
-			max-width: 90%;
-			margin: 0 auto;
-		}
+    .container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+      max-width: 90%;
+      margin: 0 auto;
+    }
 
-		.rating {
-			font-size: 24px;
-			font-weight: bold;
-			margin-top: 0px;
-			margin-bottom: 16px;
-		}
+    .rating {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 0px;
+      margin-bottom: 16px;
+    }
 
-		.title {
-			font-size: 24px;
-			font-weight: bold;
-			margin-top: 0px;
-			margin-bottom: 24px;
-		}
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 0px;
+      margin-bottom: 24px;
+    }
 
-		.subtitle {
-			font-weight: normal;
-			font-size: 18px;
-			margin-top: 0px;
-			margin-bottom: 0px;
-		}
+    .subtitle {
+      font-weight: normal;
+      font-size: 18px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
 
-		.button {
-			background-color: #4CAF50;
-			border: none;
-			color: white;
-			padding: 12px 24px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 14px;
-			margin-top: 16px;
-			cursor: pointer;
-		}
-	</style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    </style>
 </head>
-<body>
-	<div class="container">
-    <h2 class="subtitle">Route name</h2>
-		<h1 class="title">Geodude's Revenge</h1>
-    <h2 class="subtitle">Rating</h2>
-		<h1 class="rating">v6</h1>
-		<button class="button">Open in app</button>
-	</div>
-</body>
+  <body>
+    <div class="container">
+      <h2 class="subtitle">Route name</h2>
+      <h1 class="title">Geodude's Revenge</h1>
+      <h2 class="subtitle">Rating</h2>
+      <h1 class="rating">v6</h1>
+      <button class="button">Open in app</button>
+    </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Under construction</p>
+      </div>
+    </div>
+  </body>
 </html>
